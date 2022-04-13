@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+      <meta charset="utf-8">
+      <title>Find random anime</title>
+      <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+      <link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+      <h1>Show random anime</h1>
+
+      <div id="info">
+            <img src="" alt="" id="poster">
+
+            <h2 id="anime_title"></h2>
+            <span class="label">
+                  Aired:
+            </span>
+            <span id="aired" class="value">
+            </span>
+
+            <div>
+                  <span class="label">
+                        Score:
+                  </span>
+                  <span id="score" class="value">
+                  </span>
+            </div>
+            <div>
+                  <span class="label">
+                        URL:
+                  </span>
+                  <span id="url" class="value">
+                  </span>
+            </div>
+            <div>
+                  <span class="label">
+                        Synopsis:
+                  </span>
+                  <span id="synopsis" class="value">
+                  </span>
+            </div>
+
+      </div>
+      <p id="buttons">
+            <input type="button" id="find_btn" value="Find" class="osxbutton" />
+            <input type="button" id="clear_btn" value="Cancel" class="" hidden />
+      </p>
+      <p id="loaded"></p>
+
+      <script src="renderer.js"></script>
+</body>
+
+</html>

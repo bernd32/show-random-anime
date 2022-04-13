@@ -1,0 +1,32 @@
+{
+  "name": "show-random-anime",
+  "version": "1.0.0",
+  "description": "A simple Electron JS app that search for a random anime in MyAnimeList.net. THIS APP WAS MADE ONLY FOR TESTING PURPOSES. ",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernd32/show-random-anime.git"
+  },
+  "keywords": [
+    "test",
+    "js",
+    "electron"
+  ],
+  "author": "bernd32",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bernd32/show-random-anime/issues"
+  },
+  "homepage": "https://github.com/bernd32/show-random-anime#readme",
+  "devDependencies": {
+    "electron": "^18.0.3"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
