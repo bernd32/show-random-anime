@@ -1,3 +1,9 @@
+/*
+This script is searching for a random anime by performing GET requests 
+with axios, getting html data, and then pulling needed data from
+the resulting data structure with cheerio library
+*/
+
 const cheerio = require('cheerio');
 const axios = require('axios');
 
@@ -13,12 +19,10 @@ async function scrapeData() {
 
   const BASE_URL = 'https://myanimelist.net';
   /*
-  Чтобы проверить существует ли аниме по сгенерированному id, мы 
-  проверяем по этому id служебную ajax-страничку, которая весит 
-  всего около 1кб. К сожалению, ajax-страничка не содержит все нужные 
-  для нас данные, а поэтому годится только для проверки действительности 
-  id. Таким образом мы не нагружаем сервер MAL и делаем повторный 
-  поиск более быстрым.  
+  To check if an anime exists based on a randomly generated id, we use an ajax
+  page that weighs only about 1kb. Unfortunately, the ajax page doesn't contain 
+  all the data we need, so it's only good for checking the id's validity. 
+  This way we don't overload the MAL servers and making the search faster.  
   */
   let id = Math.floor(Math.random() * 44000);
   const url = `${BASE_URL}/includes/ajax.inc.php?t=64&id=${id}`;
@@ -31,12 +35,11 @@ async function scrapeData() {
       console.log('Anime found, scraping the main page... ID: ' + id);
       console.log('Reries: ' + retries);
 
-      // Айди правильное, поэтому перераписываем переменную с html-данными
-      // на html-данные основной страницы с аниме
+
       const mainPage = `${BASE_URL}/anime/${id}`;
       const dataFromMainPage = await axios.get(mainPage, axiosConfig);
       console.log(`await axios.get(${mainPage}, axiosConfig);`);
-      // Скрейпим нужные нам данные и возвращаем их 
+
       const $ = cheerio.load(dataFromMainPage.data);
       const title =
         $('.title-name > strong:nth-child(1)')
@@ -81,12 +84,12 @@ async function scrapeData() {
 
 }
 
+// setting timeout between searches to not abuse the MAL servers
 function setSleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Добавляется 'l' перед '.jpg' в полученной ссылки на картинку, 
-// чтобы получить ссылку на увеличенную версию. 
+// adding 'l' before '.jpg' to get full-size image src
 function largeImgSrc(src) {
   const largeImgSrc = src.slice(0, -4) + 'l' + src.slice(-4);
   return largeImgSrc;

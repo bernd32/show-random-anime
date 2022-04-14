@@ -1,3 +1,7 @@
+/* 
+This script is controlling the main process and displaying native interfaces 
+*/
+
 const {
   app,
   BrowserWindow,

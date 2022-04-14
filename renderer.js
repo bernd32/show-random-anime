@@ -1,3 +1,8 @@
+/*
+This script is interacting with the web contents, calling scrapeData() from
+scrapper.js, getting and displaying returned data from it
+*/
+
 const scrapper = require('./scrapper');
 
 const aired = document.querySelector('#aired'),
@@ -7,9 +12,7 @@ const aired = document.querySelector('#aired'),
       synopsis = document.querySelector('#synopsis'),
       poster = document.querySelector('#poster'),
       btnFind = document.querySelector('#find_btn'),
-      infoSection = document.querySelector('#info'),
-      btnCancel = document.querySelector('#clear_btn');
-
+      infoSection = document.querySelector('#info');
 
 infoSection.hidden = true;
 
